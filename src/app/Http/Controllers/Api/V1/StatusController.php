@@ -5,18 +5,23 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 
+class StatusController extends Controller
+{
 
-class StatusController extends Controller {
+    public function index(): JsonResponse 
+    {
 
-
-    public function index(): JsonResponse{
+        // Se a rota da api precisa ser carregada
         return response()->json([
             'success' => true,
             'data' => [
-                'aplicacao' => 'VivabemSpa',
+                'aplicacao' => 'Viva Bem Spa',
                 'api' => 'v1',
                 'status' => 'online',
             ]
-        ]);
+            
+            ]);
+
+
     }
 }
