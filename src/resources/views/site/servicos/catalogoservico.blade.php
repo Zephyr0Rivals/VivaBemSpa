@@ -6,14 +6,17 @@
                 </header>
 
                 <div class="site itens-servico wow animate__animated animate__fadeInDown">
-                    <?php foreach ($servicos as $servicoItem): ?>
-                        <a class="card-servico" href="<?php echo htmlspecialchars($servicoItem['arquivo']); ?>" aria-label="Abrir serviço <?php echo htmlspecialchars($servicoItem['nome']); ?>">
+                    @foreach ($listaServico as $servicoItem)
+                        <a class="card-servico"
+                            href="{{ route('servico.show', $servicoItem->id_servico) }}"
+                            aria-label="Abrir serviço {{ $servicoItem->nome_servico }}">
                             <span class="card-servico-imagem">
-                                <img src="<?php echo htmlspecialchars($servicoItem['imagem_card']); ?>" alt="<?php echo htmlspecialchars($servicoItem['nome']); ?>">
+                                <img src="{{ asset('vivabem-spa/assets/' . $servicoItem->imagem_servico) }}"
+                                    alt="{{ $servicoItem->nome_servico }}">
                             </span>
-                            <span class="card-servico-texto"><?php echo htmlspecialchars($servicoItem['resumo']); ?></span>
+                            <span class="card-servico-texto">{{ $servicoItem->descricao_servico }}</span>
                             <span class="card-servico-botao">Saiba Mais</span>
                         </a>
-                    <?php endforeach; ?>
+                    @endforeach
                 </div>
 </section>
