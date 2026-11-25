@@ -1,0 +1,4 @@
+name: dec
+values:
+  - key: base_url
+    value: ''

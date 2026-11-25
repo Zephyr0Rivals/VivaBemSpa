@@ -1,0 +1,26 @@
+$kind: http-request
+description: ""
+url: http://localhost:8003/api/v1/cadastro
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: "{\r
+
+    \    \"nome\": \"Bentoo de oliveira\",\r
+
+    \    \"email\": \"Bentoliva@gmail.com\",\r
+
+    \    \"senha\": \"senha1234\"\r
+
+    \    \r
+
+    \r
+
+    }"
+scripts:
+  - type: afterResponse
+    code: ""
+    language: text/javascript
+order: 1000

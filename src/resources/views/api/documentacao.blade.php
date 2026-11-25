@@ -33,7 +33,7 @@
             <div class="row mb-3">
                 <div class="col-sm-8">
                     <h1 class="mb-0 fs-3">Documentação da API</h1>
-                    <p class="mb-0">Casa do Barista - API REST v1</p>
+                    <p class="mb-0">Viva Bem Spa - API REST v1</p>
                 </div>
                 <div class="col-sm-4">
                     <nav aria-label="breadcrumb">
@@ -71,7 +71,7 @@
                         ['GET', '/status', 'Monitorar saúde da API', '200: { success, data: { aplicacao, api, status } }', true],
                     ],
                     '2. Conta e autenticação do cliente' => [
-                        ['POST', '/auth/cadastro', 'Criar conta; e-mail único; senha hash', '201: { success, data: { cliente, token } } | 422 validação', false],
+                        ['POST', '/cadastro', 'Criar conta; e-mail único; senha hash.', '201: { success, message, data: { cliente, token } } | 409 e-mail já cadastrado | 422 validação', true],
                         ['POST', '/auth/login', 'Autenticar e emitir token', '200: { success, data: { cliente, token } } | 401 credenciais inválidas', false],
                         ['POST', '/auth/logout', 'Revogar token atual', '200: { success, message }', false],
                         ['GET', '/auth/me', 'Obter identidade autenticada', '200: { success, data: { cliente } }', false],
@@ -79,11 +79,11 @@
                         ['POST', '/auth/redefinir-senha', 'Validar token e atualizar senha', '200: { success, message } | 422 token inválido', false],
                     ],
                     '3. Home e Serviços' => [
-                        ['GET', '/categorias', 'Listar categorias ativas', '200: { success, total, data: [categorias] }', false],
-                        ['GET', '/banner(galeria)', 'Buscar banners, destaques ativos', '200: { success, message, total, data: [banner] }', true],
+                        ['GET', '/categorias', 'Listar categorias ativas', '200: { success, total, data: [categorias] }', true],
+                        ['GET', '/banner(galeria)', 'Buscar banners, destaques ativos', '200: { success, message, total, data: [banner] }', false],
                         ['GET', '/servicos', 'Listar serviços ativos em ordem alfabética (rota atual; no catálogo: /servico, com busca, categoria e destaque)', '200: { success, message, total, data: [servicos] }', true],
-                        ['GET', '/servicos/{id}', 'Detalhes de produto disponível', '200: { success, data: produto } | 404', false],
-                        ['GET', '/servicos/{id}/avaliacoes', 'Personalizações configuradas, se houver', '200: { success, data: [avaliacoes] }', false],
+                        ['GET', '/servicos/{id}', 'Detalhes de produto disponível', '200: { success, message, data: servicoAtual } | 404 produto não encontrado', true],
+                        ['GET', '/servicos/{id}}/depoimentos', 'Busca os depoimentos, do mais novo ao mais velho, de um serviço específico, se houver', '200: { success, message, total, data: [depoimentos] } | 404 Depoimentos não encontrado', true],
                         ['GET', '/servicos/{id}/horarios', 'Ver todos os horários disponíveis para tratamento', '200: { success, data: [horarios] }', false],
                     ],
 
