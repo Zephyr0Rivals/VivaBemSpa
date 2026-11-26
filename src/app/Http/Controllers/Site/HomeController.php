@@ -26,7 +26,7 @@ class HomeController extends Controller
                 'tbl_depoimento.nota_depoimento',
                 'tbl_cliente.nome_cliente',
             ])
-            ->orderByDesc('tbl_depoimento.data_criacao')
+            ->orderByDesc('tbl_depoimento.data_criacao_depoimento')
             ->get();
 
         // Busca os eventos ativos (nomeado exatamente como $eventos)

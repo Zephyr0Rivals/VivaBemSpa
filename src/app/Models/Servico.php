@@ -24,4 +24,9 @@ class Servico extends Model
     protected $casts = [
         'indicacoes_servico' => 'array',
     ];
+
+    public function depoimentos()
+    {
+        return$this->hasMany(Depoimento::class, 'id_servico', 'id_servico');
+    }
 }

@@ -10,9 +10,9 @@ class Categoria extends Model
 
     protected $primaryKey = 'id_categoria';
 
-    public const CREATED_AT = 'data_criacao';
+    public const CREATED_AT = 'data_criacao_categoria';
 
-    public const UPDATED_AT = 'data_atualizacao';
+    public const UPDATED_AT = 'data_atualizacao_categoria';
 
     protected $fillable = [
         'nome_categoria',

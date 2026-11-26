@@ -22,6 +22,6 @@ class ServicoController extends Controller
             ->where('status_servico', 'ATIVO')
             ->firstOrFail();
 
-        return view('site.servicos.show', compact('servicoAtual'));
+        return view('site.servicos.servico', compact('servicoAtual'));
     }
 }

@@ -1,0 +1,58 @@
+  body {
+            background: var(--cor-fundo-1);
+        }
+
+        .api-topo {
+            background: #0b0b0b;
+            padding: 20px 0;
+        }
+
+        .api-topo img {
+            width: 150px;
+        }
+
+        /* Títulos e textos sobre o card marrom */
+        .card .card-title,
+        .card .card-footer {
+            color: var(--cor-texto);
+        }
+
+        th {
+            color: var(--cor-fundo-1) !important;
+        }
+
+        td code {
+            color: var(--cor-primaria);
+            word-break: break-word;
+        }
+
+        .metodo {
+            min-width: 62px;
+            font-family: var(--fonte-texto);
+            letter-spacing: .5px;
+        }
+
+        .badge-implementado {
+            background: var(--cor-fundo-2);
+            color: var(--cor-fundo-3);
+        }
+
+        .badge-previsto {
+            background: #cdbba8;
+            color: var(--cor-texto);
+        }
+
+        pre.exemplo {
+            background: var(--cor-fundo-2);
+            color: var(--cor-fundo-1);
+            border-radius: 6px;
+            padding: 16px;
+            margin: 0;
+        }
+
+        .aviso-api {
+            border-left: 4px solid var(--cor-secundaria-2);
+            background: #fff8;
+            padding: 12px 16px;
+            border-radius: 4px;
+        }
