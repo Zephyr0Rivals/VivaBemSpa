@@ -25,8 +25,10 @@ class Servico extends Model
         'indicacoes_servico' => 'array',
     ];
 
-    public function depoimentos()
-    {
+    public function depoimentos(){
         return$this->hasMany(Depoimento::class, 'id_servico', 'id_servico');
+    }
+    public function favoritos(){
+        return$this->hasMany(Favoritos::class, 'id_servico', 'id_servico');
     }
 }

@@ -59,4 +59,21 @@ class ServicoController extends Controller
             'data'      => $depoimentos,
         ]);
     }
+    public function horarios(int $id): JsonResponse
+    {
+        $servico = Servico::findOrFail($id);
+
+        $depoimentos = $servico->depoimentos()
+            ->where('status_depoimento', 'APROVADO')
+            ->with('clientes:id_cliente,nome_cliente,foto_cliente')
+            ->orderByDesc('id_depoimento')
+            ->get();
+
+        return response()->json([
+            'success'   => true,
+            'message'   => 'depoimentos consultados com sucesso',
+            'total'     => $depoimentos->count(),
+            'data'      => $depoimentos,
+        ]);
+    }
 }
