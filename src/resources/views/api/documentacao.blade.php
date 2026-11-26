@@ -91,7 +91,7 @@
                         ['GET', '/perfil', 'Consultar dados cadastrais', '200: { success, data: cliente }', false],
                         ['PATCH', '/perfil', 'Atualizar nome, telefone e foto autorizados', '200: { success, data: cliente } | 422', false],
                         ['GET', '/notificacoes', 'Buscar as notifcacoes do usuário', '200: { success, data: [notificacoes] } | 404 ', false],
-                        ['GET', '/favoritos', 'Buscar todos os favoritos do usuário', '200: { success, data: [favoritos] }', false],
+                        ['GET', '/favoritos', 'Buscar todos os favoritos do usuário', '200: { success, data: [favoritos] }', true],
                         ['POST', '/favoritos/{id}', 'Favoritar um serviço do spa', '201: { success, data: favoritos } | 404 | 409 já favoritado', false],
                         ['PATCH', '/favoritos/{id}', 'Remover um serviço de favoritos', '200: { success, message } | 404 sem favoritos', false],
 

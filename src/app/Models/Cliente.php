@@ -29,4 +29,7 @@ class Cliente extends Model{
     public function depoimentos(){
         return $this->hasMany(Depoimento::class, 'id_cliente', 'id_cliente');
     }
+    public function favoritos(){
+        return $this->hasMany(Favoritos::class, 'id_cliente', 'id_cliente');
+    }
 }
