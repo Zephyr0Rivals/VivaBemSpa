@@ -8,17 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 
 Class Eventos extends Model{
 
-    protected $table = 'tbl_evento';
-    protected $primaryKey = 'id_evento';
+    protected $table = 'tbl_eventos';
+    protected $primaryKey = 'id_eventos';
 
     public $timestamps = false;
 
     protected $fillable = [
         'id_categoria',
-        'imagem_evento',
-        'data_evento',
-        'nome_evento',
-        'status_evento',
-        'descricao_evento'
+        'imagem_eventos',
+        'data_eventos',
+        'nome_eventos',
+        'status_eventos',
+        'descricao_eventos'
     ];
 }

@@ -46,6 +46,8 @@ Route::fallback([HomeController::class, 'index']);
 
 Route::get('/galeria/{id}', [HomeController::class, 'galeriaShow'])->name('imagem_galeria');
 
+#  ÁREA RESTRITA - Todas as rotas deste grupo exigem autenticação.
+
 /*
 |--------------------------------------------------------------------------
 | LOGIN
@@ -58,7 +60,8 @@ Route::get('/galeria/{id}', [HomeController::class, 'galeriaShow'])->name('image
 Route::middleware('guest')->group(function () {
 
     // Exibir tela de login
-    Route::get('/login', [LoginController::class, 'login'])->name('login');
+    Route::get('/login', [LoginController::class, 'index'])
+        ->name('login');
 
     // Processar login
     Route::post('/login', [LoginController::class, 'login'])
@@ -97,17 +100,4 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/logout', [LoginController::class, 'logout'])
         ->name('logout');
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | ROTAS ADMINISTRATIVAS
-    |--------------------------------------------------------------------------
-    */
-
-    Route::prefix('admin')->group(function () {
-
-
-    });
-
-});
+        });

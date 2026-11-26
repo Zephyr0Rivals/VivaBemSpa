@@ -18,23 +18,23 @@
     <div class="card event-calendar-card">
       <div class="card-header event-calendar-header d-flex justify-content-between align-items-center">
         <h3 class="card-title">Agenda</h3>
-        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal-add-evento" {{ $categorias->isEmpty() ? 'disabled' : '' }}><i class="bi bi-plus-lg me-1"></i>Novo evento</button>
+        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal-add-eventos" {{ $categorias->isEmpty() ? 'disabled' : '' }}><i class="bi bi-plus-lg me-1"></i>Novo evento</button>
       </div>
       <div class="card-body"><div id="event-calendar"></div></div>
     </div>
   </div></div>
 </main>
 
-<div class="modal fade" id="modal-add-evento" tabindex="-1" aria-labelledby="modal-add-evento-label" aria-hidden="true">
+<div class="modal fade" id="modal-add-eventos" tabindex="-1" aria-labelledby="modal-add-eventos-label" aria-hidden="true">
   <div class="modal-dialog"><div class="modal-content">
-    <form method="POST" action="{{ route('admin.evento.store') }}">
+    <form method="POST" action="{{ route('admin.eventos.store') }}">
       @csrf
       <div class="modal-header"><h5 class="modal-title" id="modal-add-evento-label">Adicionar evento</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button></div>
       <div class="modal-body">
-        <div class="mb-3"><label for="evento-nome" class="form-label">Nome do evento</label><input id="evento-nome" name="nome_evento" class="form-control" maxlength="100" value="{{ old('nome_evento') }}" required></div>
-        <div class="mb-3"><label for="evento-categoria" class="form-label">Categoria</label><select id="evento-categoria" name="id_categoria" class="form-select" required><option value="">Selecione uma categoria</option>@foreach($categorias as $categoria)<option value="{{ $categoria->id_categoria }}" @selected(old('id_categoria') == $categoria->id_categoria)>{{ $categoria->nome_categoria }}</option>@endforeach</select></div>
-        <div class="mb-3"><label for="evento-descricao" class="form-label">Descrição</label><textarea id="evento-descricao" name="descricao_evento" class="form-control" rows="3" required>{{ old('descricao_evento') }}</textarea></div>
-        <div class="row"><div class="col-sm-6 mb-3"><label for="evento-data" class="form-label">Data</label><input id="evento-data" name="data_evento" type="date" class="form-control" value="{{ old('data_evento') }}" required></div><div class="col-sm-6 mb-3"><label for="evento-horario" class="form-label">Horário</label><input id="evento-horario" name="horario_evento" type="time" class="form-control" value="{{ old('horario_evento', '09:00') }}" required></div></div>
+        <div class="mb-3"><label for="eventos-nome" class="form-label">Nome do evento</label><input id="eventos-nome" name="nome_evento" class="form-control" maxlength="100" value="{{ old('nome_eventos') }}" required></div>
+        <div class="mb-3"><label for="eventos-categoria" class="form-label">Categoria</label><select id="eventos-categoria" name="id_categoria" class="form-select" required><option value="">Selecione uma categoria</option>@foreach($categorias as $categoria)<option value="{{ $categoria->id_categoria }}" @selected(old('id_categoria') == $categoria->id_categoria)>{{ $categoria->nome_categoria }}</option>@endforeach</select></div>
+        <div class="mb-3"><label for="eventos-descricao" class="form-label">Descrição</label><textarea id="eventos-descricao" name="descricao_eventos" class="form-control" rows="3" required>{{ old('descricao_eventos') }}</textarea></div>
+        <div class="row"><div class="col-sm-6 mb-3"><label for="evento-data" class="form-label">Data</label><input id="eventos-data" name="data_eventos" type="date" class="form-control" value="{{ old('data_eventos') }}" required></div><div class="col-sm-6 mb-3"><label for="eventos-horario" class="form-label">Horário</label><input id="eventos-horario" name="horario_eventos" type="time" class="form-control" value="{{ old('horario_eventos', '09:00') }}" required></div></div>
       </div>
       <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button><button type="submit" class="btn btn-primary" {{ $categorias->isEmpty() ? 'disabled' : '' }}>Salvar evento</button></div>
     </form>
@@ -47,7 +47,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const calendarElement = document.getElementById('event-calendar');
-  const modalElement = document.getElementById('modal-add-evento');
+  const modalElement = document.getElementById('modal-add-eventos');
   const modal = new bootstrap.Modal(modalElement);
   const events = @json($eventos);
   const calendar = new FullCalendar.Calendar(calendarElement, {
@@ -61,8 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
     dayMaxEvents: true,
     events,
     dateClick(info) {
-      document.getElementById('evento-data').value = info.dateStr.slice(0, 10);
-      document.getElementById('evento-horario').value = info.dateStr.includes('T') ? info.dateStr.slice(11, 16) : '09:00';
+      document.getElementById('eventos-data').value = info.dateStr.slice(0, 10);
+      document.getElementById('eventos-horario').value = info.dateStr.includes('T') ? info.dateStr.slice(11, 16) : '09:00';
       modal.show();
     },
     eventClick(info) {

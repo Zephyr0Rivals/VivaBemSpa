@@ -6,7 +6,7 @@
                 </header>
 
                 <div class="site itens-servico wow animate__animated animate__fadeInDown">
-                    <?php foreach ($servicos as $servicoItem): ?>
+                    <?php foreach ($listaServico as $servicoItem): ?>
                         <a class="card-servico" href="<?php echo htmlspecialchars($servicoItem['arquivo']); ?>" aria-label="Abrir serviço <?php echo htmlspecialchars($servicoItem['nome']); ?>">
                             <span class="card-servico-imagem">
                                 <img src="<?php echo htmlspecialchars($servicoItem['imagem_card']); ?>" alt="<?php echo htmlspecialchars($servicoItem['nome']); ?>">

@@ -12,7 +12,7 @@ class ServicoController extends Controller
     {
         $listaServico = Servico::where('status_servico', 'ATIVO')->inRandomOrder()->get();
 
-        return view('site.servicos.catalogoservico', compact('listaServico'));
+        return view('site.servicos.servico', compact('listaServico'));
     }
 
     // Método novo para a rota /servico/{slug}
