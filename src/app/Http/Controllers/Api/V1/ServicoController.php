@@ -5,39 +5,26 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use App\Models\Servico;
-use App\Models\Depoimento;
-use App\Models\Cliente;
+
+
 
 class ServicoController extends Controller
 {
-    // Lista todos os serviços
+    // Listar todos os servico
     public function index(): JsonResponse
     {
-
-        // 1- Consultar os serviços no Banco
+        // 1- Consultar os servico no banco
         $servico = Servico::where('status_servico', 'ATIVO')
         ->orderBy('nome_servico', 'asc')
         ->get();
 
-        return response()->json([
-            'success' => true,
-            'message' => 'servicos consultados com sucesso',
-            'total' => $servico->count(),
-            'data' => $servico
-
-        ], 200);
-        
-    }
-
-    // Listar um serviço específico 
-    public function show(int $id): JsonResponse
-    {
-        $servicoAtual = Servico::where('status_servico', 'ATIVO')->findOrFail($id);
+       
 
         return response()->json([
             'success' => true,
-            'message' => 'serviço {$id} consultado com sucesso',
-            'data'    => $servicoAtual,
+            'message' => 'serviços consultados com sucesso',
+            'total'   => $servico->count(),
+            'data'    => $servico
         ], 200);
     }
 
@@ -77,3 +64,4 @@ class ServicoController extends Controller
         ]);
     }
 }
+

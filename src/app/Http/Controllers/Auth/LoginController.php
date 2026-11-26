@@ -5,14 +5,20 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Usuario;
 
 class LoginController extends Controller
 {
-// Exibir tela de login
-public function index()
+    public function dashboard()
 {
-    return view('auth.login');
+    dd('DASHBOARD OK');
 }
+    // Exibir tela de login
+    public function index()
+    {
+        return view('auth.login');
+    }
+
 
     // Realizar login
     public function login(Request $request)
@@ -27,23 +33,21 @@ public function index()
             'password.required' => 'Informe sua senha.',
         ]);
 
-        // Procura o utilizador pelo e-mail e status ativo
-        $usuario = \App\Models\Usuario::where('email_usuario', $dados['email'])
-                                      ->where('status_usuario', 'ATIVO')
-                                      ->first();
 
-        // Verifica se o utilizador existe e se a senha confere (texto plano)
-        if ($usuario && $dados['password'] === $usuario->senha_usuario) {
+        // 2 - Tentar autenticar
+        $usuario = Usuario::where('email_usuario', $dados['email'])
+                  ->where('status_usuario', 'ATIVO')
+                  ->first();
 
-            // Faz o login manual no sistema
-            Auth::login($usuario);
+if ($usuario && $dados['password'] === $usuario->senha_usuario) {
 
-            // Segurança: cria uma nova sessão
-            $request->session()->regenerate();
+    Auth::login($usuario);
 
-            // Redireciona para o dashboard
-            return redirect()->intended(route('admin.dashboard'));
-        }
+    $request->session()->regenerate();
+
+    return redirect()->route('admin.dashboard');
+}
+
 
         // 3 - Login inválido
         return back()
@@ -52,6 +56,7 @@ public function index()
             ])
             ->onlyInput('email');
     }
+
 
     // Logout
     public function logout(Request $request)
@@ -65,5 +70,6 @@ public function index()
         return redirect()
             ->route('login')
             ->with('success', 'Logout realizado com sucesso.');
+            
     }
 }

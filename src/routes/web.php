@@ -5,7 +5,6 @@ use App\Http\Controllers\Site\SobreController;
 use App\Http\Controllers\Site\ContatoController;
 use App\Http\Controllers\Site\ServicoController;
 
-
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 
@@ -47,14 +46,7 @@ Route::fallback([HomeController::class, 'index']);
 
 Route::get('/galeria/{id}', [HomeController::class, 'galeriaShow'])->name('imagem_galeria');
 
-
-/*
-|--------------------------------------------------------------------------
-//                          Documentação da API 
-|--------------------------------------------------------------------------
-*/
-Route::view('/documentacao', 'api.documentacao')->name('api.documentacao');
-
+#  ÁREA RESTRITA - Todas as rotas deste grupo exigem autenticação.
 
 /*
 |--------------------------------------------------------------------------
@@ -68,7 +60,8 @@ Route::view('/documentacao', 'api.documentacao')->name('api.documentacao');
 Route::middleware('guest')->group(function () {
 
     // Exibir tela de login
-    Route::get('/login', [LoginController::class, 'login'])->name('login');
+    Route::get('/login', [LoginController::class, 'index'])
+        ->name('login');
 
     // Processar login
     Route::post('/login', [LoginController::class, 'login'])
@@ -107,17 +100,4 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/logout', [LoginController::class, 'logout'])
         ->name('logout');
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | ROTAS ADMINISTRATIVAS
-    |--------------------------------------------------------------------------
-    */
-
-    Route::prefix('admin')->group(function () {
-
-
-    });
-
-});
+        });
