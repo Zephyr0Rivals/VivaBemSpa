@@ -55,15 +55,15 @@ class CadastroController extends Controller
 
     public function index(): JsonResponse{
 
-        $mac = Cliente::where('status_cliente', 'ATIVO')
+        $consultaCliente = Cliente::where('status_cliente', 'ATIVO')
         ->orderBy('nome_cliente', 'asc')
         ->get();
 
         return response()->json([
             'success' => true,
             'message' => 'clientes consultados com sucesso',
-            'total' => $mac->count(),
-            'data'=> $mac
+            'total' => $consultaCliente->count(),
+            'data'=> $consultaCliente
 
 
         ], 200);

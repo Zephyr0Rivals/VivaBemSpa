@@ -31,4 +31,7 @@ class Servico extends Model
     public function favoritos(){
         return$this->hasMany(Favoritos::class, 'id_servico', 'id_servico');
     }
+    public function agendamentos(){
+        return $this->hasMany(Agendamento::class, 'id_horario', 'id_horario');
+    }
 }

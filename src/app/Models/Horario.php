@@ -15,4 +15,8 @@ class Horario extends Model{
         'inicio_horario',
         'final_horario'
     ];
+
+    public function agendamentos(){
+        return $this->hasMany(Agendamento::class, 'id_horario', 'id_horario');
+    }
 }

@@ -18,13 +18,24 @@ class ServicoController extends Controller
         ->orderBy('nome_servico', 'asc')
         ->get();
 
-       
 
         return response()->json([
             'success' => true,
             'message' => 'serviços consultados com sucesso',
             'total'   => $servico->count(),
             'data'    => $servico
+        ], 200);
+    }
+
+    // Buscar um id específico
+    public function show(int $id): JsonResponse
+    {
+        $servico = Servico::where('status_servico', 'ATIVO')->findOrFail($id);
+
+        return response()->json([
+            'success'   => true,
+            'message'   => 'serviço consultado com sucesso',
+            'data'      => $servico,
         ], 200);
     }
 
@@ -46,6 +57,7 @@ class ServicoController extends Controller
             'data'      => $depoimentos,
         ]);
     }
+    // Buscar os horários de um serviço especifíco
     public function horarios(int $id): JsonResponse
     {
         $servico = Servico::findOrFail($id);

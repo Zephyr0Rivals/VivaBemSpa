@@ -1,0 +1,19 @@
+$kind: http-request
+name: http://localhost:8003/api/v1/cadastro
+description: ""
+url: http://localhost:8003/api/v1/cadastro
+method: POST
+headers:
+  Accept: application/json
+body:
+  type: json
+  content: "{\r
+
+    \    \"nome\": \"jhon\",\r
+
+    \    \"email\": \"jhonbarbershop@gmail.com\",\r
+
+    \    \"senha\": \"Freshcut123\"\r
+
+    }"
+order: 2000

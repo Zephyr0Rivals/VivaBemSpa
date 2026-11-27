@@ -32,4 +32,8 @@ class Cliente extends Model{
     public function favoritos(){
         return $this->hasMany(Favoritos::class, 'id_cliente', 'id_cliente');
     }
+    public function agendamentos(){
+        return $this->hasMany(Agendamento::class, 'id_horario', 'id_horario');
+    }
 }
+

@@ -1,5 +1,5 @@
 services:
-
+  
   app:
     build: .
     container_name: vivabemspa-app
@@ -46,3 +46,6 @@ services:
 
 volumes:
   mysql_data:
+  
+
+

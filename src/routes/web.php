@@ -46,6 +46,15 @@ Route::fallback([HomeController::class, 'index']);
 
 Route::get('/galeria/{id}', [HomeController::class, 'galeriaShow'])->name('imagem_galeria');
 
+
+/*
+|--------------------------------------------------------------------------
+//                          Documentação da API 
+|--------------------------------------------------------------------------
+*/
+Route::view('/documentacao', 'api.documentacao')->name('api.documentacao');
+
+
 #  ÁREA RESTRITA - Todas as rotas deste grupo exigem autenticação.
 
 /*
